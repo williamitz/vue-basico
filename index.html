@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+</head>
+<body>
+
+    <div class="container p-3">
+        <div id="panel">
+            <h1>{{header}}</h1>
+        
+            <ul>
+                <li v-for=" user of users ">
+                    <a>
+                        {{user.name}}
+                        <span v-if=" user.sex === 'M' " style="color: blue;"> :) </span>
+                        <span v-if=" user.sex === 'F' " style="color:red;"> :) </span>
+                        <input type="number" v-model.number="user.years">
+                        <button @click=" user.years = user.years +1 " class="btn btn-success">+</button>
+                        <button @click=" user.years = user.years - 1 " class="btn btn-danger">-</button>
+                    </a>
+        
+                </li>
+            </ul>
+        
+            <h2>Edad promedio: {{avgEdad}}</h2>
+        
+            <div action="">
+                <input type="text" v-model="nameUser" @keyup.enter="addDeveloper" class="form-control">
+                <div>
+                    <label>
+                        <input type="radio" name="sex" v-model="sexUser" value="M">
+                        Masculino
+                    </label>
+        
+                    <label>
+                        <input type="radio" name="sex" v-model="sexUser" value="F">
+                        Femenino
+                    </label>
+                </div>
+        
+                <button type="button" v-on:click="addDeveloper">Agregar</button>
+        
+            </div>
+
+            <div :class="{ 'bg-success': yearsAvg <= 20, 'bg-info': yearsAvg > 20 && yearsAvg < 30, 'btn-danger': yearsAvg >= 30 }">
+                <p class="text-white">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex dolores doloremque nesciunt facere eaque! Deserunt placeat a facere nesciunt provident expedita architecto nostrum? Porro molestiae molestias modi nulla. Excepturi, ut?
+                </p>
+            </div>
+        
+        
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="index.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>
